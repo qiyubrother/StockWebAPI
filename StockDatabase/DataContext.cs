@@ -21,13 +21,15 @@ namespace StockDatabase
             optionsBuilder.UseMySql("Server=localhost;Port=3306;Database=stock;uid=root;pwd=123456;SslMode=none;");
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Reservation>().HasKey(t => new { t.HotelId, t.ReservationNo });
-            modelBuilder.Entity<Authentication>().HasKey(t => new { t.HotelId, t.Mobile, t.ReservationNo });
+            modelBuilder.Entity<User>().HasKey(t => new { t.UserName });
+            modelBuilder.Entity<Goods>().HasKey(t => new { t.GoodsId });
+            modelBuilder.Entity<Client>().HasKey(t => new { t.ClientId });
+            //modelBuilder.Entity<Client>().HasKey(t => new { t.HotelId, t.Mobile, t.ReservationNo });
             base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Reservation> Reservations { get; set; }
-        public DbSet<Authentication> Authentications { get; set; }
+        public DbSet<Goods> Goods { get; set; }
+        public DbSet<Client> Client { get; set; }
     }
 }
