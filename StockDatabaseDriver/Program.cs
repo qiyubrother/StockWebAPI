@@ -13,7 +13,9 @@ namespace StockDatabaseDriver
         {
             using (var dc = new DataContext())
             {
+                // 删除数据库
                 dc.Database.EnsureDeleted();
+                // 创建数据库
                 dc.Database.EnsureCreated();
 
                 #region 预设数据
